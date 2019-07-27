@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2016 by ASKP
+-->
+<html>
+<meta name="robots" content="noindex">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>chat</title>
+<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+
+
+</head>
+  <body>
+<button onclick="vibrate()">Vibrate</button><br>
+<hr>
+<textarea id="message"></textarea>
+<button click="sendMessage()">Send Message</button>
+ <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+
+ <script type="text/javascript">
+function sendMessage(){
+var text=document.getElementById("message").value;
+var ref=new Firebase("https://treasurehunt.firebaseio.com/"+parameters.key+"/vibrate");
+ref.set("true");
+}
+
+
+function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
+
+    if (query === url || query === "") {
+        return;
+    }
+
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=");
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) {
+            parms[n] = [];
+        }
+
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
+}
+
+var parameters= parseURLParams(window.location.href );
+function vibrate(){
+var ref=new Firebase("https://treasurehunt.firebaseio.com/"+parameters.key+"/vibrate");
+ref.set("true");
+}
+</script>
+</body>
+</html>

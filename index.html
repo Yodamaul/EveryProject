@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by Yekush (http://jsbin.com/lereha/5/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+
+<html>
+
+<head>
+	
+<meta name="title" content="AcadME">
+<meta name="description" content="AcadME Full App">
+   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, height=device-height" />
+
+  <preference name="EnableViewportScale" value="true" />
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://code.ionicframework.com/1.2.4/js/ionic.bundle.js"></script>
+  <link href="https://code.ionicframework.com/1.2.4/css/ionic.min.css" rel="stylesheet" type="text/css" />
+
+  <script src="https://cdn.firebase.com/js/client/2.1.1/firebase.js"></script>
+  <title>Assignments</title>
+<style id="jsbin-css">
+ion-content{background-color:#2c3e50}
+    .card{
+        max-width: 1024px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+</style>
+</head>
+
+<body ng-app="ionicApp">
+  <div ng-controller="MainCtrl">
+		<ion-content>
+			<div class="list card">
+
+  <a href="#html" class="item item-icon-left">
+    <i class="icon ion-social-html5"></i>
+   HTML/CSS
+  </a>
+
+  <a href="#html" class="item item-icon-left">
+    <i class="icon ion-social-javascript"></i>
+    Javascript
+  </a>
+
+  <a href="#java" class="item item-icon-left"><i class="icon ion-coffee"></i>
+    
+   Java
+  </a>
+
+  <a href="#python" class="item item-icon-left">
+    <i class="icon ion-social-python"></i>
+    Python
+				</a>
+
+  <div class="item item-icon-left">
+    <i class="icon ion-social-octocat"></i>
+    Git
+				</div>
+
+  <a href="#chrome" class="item item-icon-left">
+    <i class="icon ion-social-chrome-outline"></i>
+    Chrome Extentions
+				</a>
+
+</div>
+			<div id="java" class="list card">
+
+  <div class="item item-avatar">
+    <img src="https://upload.wikimedia.org/wikipedia/en/8/88/Java_logo.png">
+    <h2>Acadme</h2>
+    <p>Java</p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="https://raw.githubusercontent.com/Pokemon9753/askp-apps-testing/master/images/Acadame.png">
+    <p>
+     A simulated classroom created using Java. 
+    </p>
+    <p>
+      <a href="https://github.com/Pokemon9753/Acadme" target="_blank"  class="subdued">Github Repository</a>
+    </p>
+  </div>
+
+</div>
+						<div id="python" class="list card">
+
+  <div  class="item item-avatar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png">
+    <h2>Paint</h2>
+    <p>Python, Tkinter</p>
+  </div>
+
+  <div class="item item-body">
+    <p>
+      A Python version of paint.  
+    </p>
+    <p>
+      <a href="https://github.com/Pokemon9753/askp-apps-testing/tree/master/Python" target="_blank"  class="subdued">Github Repository</a>
+    </p>
+  </div>
+
+</div>
+			
+				
+			<div id="html" class="list card">
+
+  <div class="item item-avatar">
+    <img src="http://vectorlogofree.com/wp-content/uploads/2014/07/38005-android-logo-icon-vector-icon-vector-eps.png">
+		<h2>Chatter <i>(In Progress)</i></h2>
+    <p>Native, Phonegap Build</p>
+  </div>
+
+  <div class="item item-body">
+    <p>
+      A Native Chat App built using Phonegap Build
+    </p>
+    
+  </div>
+
+</div>
+			
+			<div id="chrome" class="list card">
+
+  <div class="item item-avatar">
+    <img src="http://img.talkandroid.com/uploads/2015/11/Chrome-Logo.png">
+							<h2>QR Code Extention</h2>
+    <p>HTML, Javscript, CSS</p>
+  </div>
+
+  <div class="item item-body">
+<p>
+      A Chrome Extention that creates a Qr Code on any page. Can also be used as a plugin.
+    </p>
+    <p>
+      <a href="https://github.com/Pokemon9753/ymt" target="_blank"  class="subdued">Github Repository</a>
+    </p>
+  </div>
+
+</div>
+			
+			
+			
+			
+		
+			<div class="list card">
+
+  <div class="item item-avatar">
+    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
+    <h2>Word Tool</h2>
+    <p>HTML, Javscript, CSS, Ionic Framework, Firebase</p>
+  </div>
+
+  <div class="item item-body">
+     <p>
+      A spelling bee Web-App created with the Ionic Framework. 
+    </p>
+    <p>
+      <a href="/wordtool.html" class="subdued">Open</a>
+    </p>
+  </div>
+
+</div>
+			<div class="list card">
+
+  <div class="item item-avatar">
+    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
+    <h2>Calendar </h2>
+    <p>HTML, Javscript, CSS, Bootstrap</p>
+  </div>
+
+  <div class="item item-body">
+    <p>
+      A calendar made using the Fullcalendar API.
+    </p>
+    <p>
+      
+      <a href="/calendar.html" class="subdued">Open</a>
+    </p>
+  </div>
+
+</div>
+		
+					<div class="list card">
+
+  <div class="item item-avatar">
+    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
+    <h2>Time Line </h2>
+    <p>HTML, Javscript, CSS, D3</p>
+  </div>
+
+  <div class="item item-body">
+    <p>
+      A Timeline created using D3.
+    </p>
+    <p>
+      
+      <a href="https://yodamaul.firebaseapp.com/time.html" class="subdued">Open</a>
+    </p>
+  </div>
+
+</div>
+		
+					<div class="list card">
+
+  <div class="item item-avatar">
+    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
+    <h2>Matrix Calclator </h2>
+    <p>HTML, Javscript, CSS, JQM</p>
+  </div>
+
+  <div class="item item-body">
+    <p>
+      A Matrix Calculator.
+    </p>
+    <p>
+      
+      <a href="/mcalc.html" class="subdued">Open</a>
+    </p>
+  </div>
+
+</div>
+			
+						<div class="list card">
+
+  <div class="item item-avatar">
+    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
+    <h2>Abaci </h2>
+    <p>HTML, Javscript, CSS, Bootstrap, JQM</p>
+  </div>
+
+  <div class="item item-body">
+    <p>
+      A multitude of Abaci, 3 are shown below: Mayan, Japanese, and Chinese. 
+    </p>
+    <p>
+      
+      <a href="/cabac.html" class="subdued">Chinese</a>
+      <a href="/mabac.html" class="subdued">Mayan</a>
+      <a href="/jabac.html" class="subdued">Japanese</a>
+    </p>
+  </div>
+
+</div>
+		
+		</ion-content>
+  </div>
+
+<script id="jsbin-javascript">
+
+var app = angular.module("ionicApp", ["ionic"]);
+app.controller('MainCtrl', function($scope) {
+  
+});
+</script>
+</body>
+
+</html>

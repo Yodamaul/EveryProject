@@ -1,31 +1,43 @@
+
 <!doctype html>
 <!--
 Created using JS Bin
 http://jsbin.com
 
-Copyright (c) 2019 by Yekush (http://jsbin.com/muroxa/3/edit)
+Copyright (c) 2016 by Yekush (http://jsbin.com/qesuzo/2/edit)
 
 Released under the MIT license: http://jsbin.mit-license.org
 -->
 <meta name="robots" content="noindex">
+<!--
+Created using JS Bin
+//jsbin.com
+
+Copyright (c) 2014 by Yekush (//jsbin.com/fibela/1/edit)
+
+Released under the MIT license: //jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
 <html lang="en">
 <head>
-  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
- 
+<link href="https://code.jquery.com/ui/1.9.2/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
+
 <link href="https://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
- 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jStorage/0.4.4/jstorage.min.js"></script>
-   <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-  
-  
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  
+
+ <script src=
+    "//cdnjs.cloudflare.com/ajax/libs/jStorage/0.4.4/jstorage.min.js"></script>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.2/resources/demos/style.css">
+
   <meta name="description" content="Japanese Abacus Mouseover" />
  <meta charset="utf-8">
   <title>Japanese Abacus</title>
-  
+
 
 <style id="jsbin-css">
 #bottom .x {
@@ -34,7 +46,7 @@ Released under the MIT license: http://jsbin.mit-license.org
     width: 0;
     height: 2px;
     padding: .5em;
-    
+
   position: relative;
  bottom: -100px;
     margin: 0 10px 10px 0;
@@ -45,7 +57,7 @@ Released under the MIT license: http://jsbin.mit-license.org
     width: 0;
     height: 2px;
     padding: .5em;
-    
+
   position: relative;
  bottom: 6px;
     margin: 0 10px 10px 0;
@@ -64,7 +76,7 @@ p{text-align:center}
     padding: .5em;
     float: right;
     margin: 5px;
-   
+
 }
 
 #topc span{    width: 15px;
@@ -72,30 +84,43 @@ p{text-align:center}
     padding: .5em;
     float: left;
     margin: 5px;
-   
+
 }
 
 </style>
+ <script>
+$( document ).on( "pageinit", ".ui-page", function() {
+  var $page = $(this);
+  $page.on( "swipeleft swiperight", function( e ) {
+  if ( $page.jqmData( "panel" ) !== "open" ) {
+    if ( e.type === "swipeleft"||e.type === "swiperight"  ) {
+    $page.find( "#mypanel" ).panel( "open" );
+    }
+  }
+  });
+  });
+  </script>
 </head>
-<body>
+<body data-role="page">
+
   <div data-role="header">
-    <a href="http://jsbin.com/fafaba/1" data-theme="a" data-icon="info" data-rel="dialog" data-close-btn="right">Help</a><h1>Japanese Abacus</h1></div>
- <div data-role="content">   
-   <span data-role="collapsible">
-  <h1>About The Japanese Abacus</h1>
-    <p>This an online Japanese Abacus. The Japanese Abacuse, unlike the school one that most people are uses to, is vertical, and is split into two sections.The tops represent 5's while the bottom represent ones. You can add ot delete columns, but only in 2's, following the Japanese Tradition. To learn more, click on the <b>Help</b> button or <a href="http://jsbin.com/fafaba/1"data-theme="b"  data-theme="b" data-icon="info" data-rel="dialog" data-close-btn="right">click here</a>.</p>
-     </span>
+   <h1>Japanese Abacus</h1></div>
+ <div data-role="content">
+ <!--   <span data-role="collapsible">
+     <h1>About The Japanese Abacus</h1>
+    <p>This an online Japanese Abacus. The Japanese Abacuse, unlike the school one that most people are uses to, is vertical, and is split into two sections.The tops represent 5's while the bottom represent ones. You can add ot delete columns, but only in 2's, following the Japanese Tradition. To learn more, click on the <b>Help</b> button or <a href="https://jsbin.com/fafaba/1" data-theme="b"  data-theme="b" data-icon="info" data-rel="dialog" data-close-btn="right">click here</a>.</p>
+     </span> -->
 <input id="f"/><button id="s">Submit</button>
 
  <table>
-  
+
    <tr id="c">
-     <td id="s1"><center><input min="9" value="11" step="2" type="number"/></center>
-       <center><button id="s">Submit</button></center></td>
-     
+     <td id="s1"><!-- <center><input min="9" value="11" step="2" type="number"/></center>
+       <center><button id="s">Submit</button></center> --></td>
+
      <td class="a"> <p id="count10">0</p></td>
      <td class="b"><p id="count9">0</p></td>
-     <td class=c> <p id="count8">0</p></td>
+     <td class="c"> <p id="count8">0</p></td>
      <td class="a"><p id="count7">0</p></td>
      <td class="a"> <p id="count6">0</p></td>
      <td class="a"><p id="count5">0</p></td>
@@ -105,93 +130,93 @@ p{text-align:center}
      <td class="a"><p id="count1">0</p></td>
      <td class="a"><p id="count0">0</p></td>
    </tr>
-  
+
    <tr id="topc">
      <td id="s2"><center><button id="a">Add</button> </center></td>
      <td>
    <span id="top10" class="ui-widget-header">
    <div class="x" ></div>
 
-       </span> 
+       </span>
      </td>
      <td>
    <span id="top9" class="ui-widget-header">
    <div class="x" ></div>
- 
-       </span> 
+
+       </span>
      </td>
      <td>
    <span id="top8" class="ui-widget-header">
    <div class="x" ></div>
 
-       </span> 
+       </span>
      </td>
      <td>
    <span id="top7" class="ui-widget-header">
    <div class="x" ></div>
 
-       </span> 
+       </span>
      </td>
      <td>
    <span id="top6" class="ui-widget-header">
    <div class="x" ></div>
 
-       </span> 
+       </span>
      </td>
      <td>
    <span id="top5" class="ui-widget-header">
    <div class="x" ></div>
 
-       </span> 
+       </span>
      </td>
      <td>
    <span id="top4" class="ui-widget-header">
    <div class="x" ></div>
-  
-       </span> 
+
+       </span>
      </td>
      <td>
    <span id="top3" class="ui-widget-header">
    <div class="x" ></div>
- 
-       </span> 
+
+       </span>
      </td>
      <td>
    <span id="top2" class="ui-widget-header">
    <div class="x" ></div>
 
-       </span> 
+       </span>
      </td>
      <td>
    <span id="top1" class="ui-widget-header">
-     <div class="x" ></div></td>
+		 <div class="x" ></div></span></td>
      <td>
    <span id="top0" class="ui-widget-header">
-     <div class="x" ></div></td>
- 
-       </span> 
+     <div class="x" ></div>
+
+       </span>
      </td>
-     
-   
-   
-   
-   
-   
+
+
+
+
+
+
    </tr>
-   
-   
-   
+
+
+
    <tr id="bottom">
 
      <td id="s3"><center><button id="d">Delete</button></center> </td>
      <td>
-  
+
     <span id="start10" class="ui-widget-header">
    <div class="x" ></div>
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
-  
+
        </span>
      </td>
      <td>
@@ -200,7 +225,7 @@ p{text-align:center}
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
-  
+
  </span>
      </td>
    <td>
@@ -209,17 +234,17 @@ p{text-align:center}
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
- 
+
   </span>
-  
+
      </td>
    <td><span id="start7" class="ui-widget-header">
    <div class="x" ></div>
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
-  
-  
+
+
        </span></td>
      <td>
   <span id="start6" class="ui-widget-header">
@@ -227,7 +252,7 @@ p{text-align:center}
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
- 
+
 
   </span>
      </td>
@@ -237,14 +262,14 @@ p{text-align:center}
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
-  
+
 
   </span>
-  
-     
-     </td>  
-     
- <td>   
+
+
+     </td>
+
+ <td>
   <span id="start4" class="ui-widget-header">
    <div class="x" ></div>
   <div class="x"></div>
@@ -259,7 +284,7 @@ p{text-align:center}
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
- 
+
   </span>
      </td>
    <td>
@@ -268,7 +293,7 @@ p{text-align:center}
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
- 
+
   </span>
      </td>
  <td>
@@ -277,29 +302,29 @@ p{text-align:center}
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
-    </span> 
+    </span>
      </td><td>
    <span id="start0" class="ui-widget-header">
    <div class="x" ></div>
   <div class="x"></div>
   <div class="x"></div>
   <div class="x"></div>
-    </span> 
-     
+    </span>
+
      </td>
-     
-     
-     
-     
-     
+
+
+
+
+
 
    </tr>
-   
-   
-   
-   
-   
-   
+
+
+
+
+
+
   </table>
   <center>
 <h1 class="pp">Total</h1>
@@ -309,15 +334,9 @@ p{text-align:center}
 </div>
 <center>
 <table id="clean"></table>
-  </div>
-   <div data-role="footer" class="ui-bar">
-          <center>
-<form action="http://jsbin.com/letaco/2">
-    <input type="submit"  data-icon="home" value="Go To Home Page">
-</form>
-            </center>
-</div>
- 
+		</center></center></div>
+
+
 <script id="jsbin-javascript">
 
 //Undo and Redo
@@ -335,11 +354,11 @@ var all = [];
 var key = [];
 
 $("#s").click(function(){
-  
+
         function splitToParts() {
            $("#topc .x").css("background-color", "yellow").css("bottom", "6px");
       $("#bottom .x").css("background-color", "yellow").css("bottom", "-100px");
-        $("p").text("0"); 
+        $("p").text("0");
                 var wholePart = Math.floor(n);
                 var parts = [];
                 var multiplier = 1;
@@ -352,18 +371,18 @@ $("#s").click(function(){
                         wholePart = Math.floor(wholePart / 10);
                         multiplier *= 10;
                 }
-               
+
          for (var i =0; i < parts.length; i++) {
-                      
+
                   var x = parts.length - i;
                         var moved = parts[i] / (Math.pow(10, x -
                                 1));
            parts[i]=moved;
          }
-           parts.reverse(); 
+           parts.reverse();
           for(var j=parts.length-1;j>-1;j--)
              {
-             
+
                $("#count"+j).text(parts[j]);
                console.log(j);
               if(parts[j]<5)
@@ -373,11 +392,11 @@ $("#s").click(function(){
                  {$("#start"+j+" .x").not($("#start"+j+" .x").slice(parts[j]-5)).css("background-color", "black").css(
                         "bottom", "0px");
                 $("#top"+j+" .x").css("background-color", "black").css("bottom", "-60px");}
-                
-                
-                
-                
-                
+
+
+
+
+
               }
              }
         }
@@ -406,10 +425,10 @@ $(document).on("click",".x",function() {
         });
  if   (x == "-100px") {
         $(this).prevAll().andSelf().addClass("moved").css("bottom", "4px");
-    } 
+    }
   else if (x == "4px") {
         $(this).nextAll().andSelf().removeClass("moved").css("bottom","-100px");
-    } 
+    }
   else if (x == "6px") {
         $(this).nextAll().andSelf().addClass("moved").css("bottom","-60px");
         }
@@ -427,7 +446,7 @@ else if (x == "-60px") {
         $("#c").find("p").each(function() {
                 cv.push($("#" + this.id).text());
         });
-  
+
   var tre = 0;
   var tc = count.length;
         for (var rw = 0; rw < cv.length; rw++) {
@@ -436,8 +455,8 @@ else if (x == "-60px") {
         var zqaw = tre.toLocaleString("en");
        $(".pp").text(zqaw);
   $("ul").append("<li>"+zqaw+"</li>");
-  
- 
+
+
 });
 
 
@@ -447,7 +466,7 @@ $(document).on("click","#a",function()
              var s=$("#c p:first").attr("id");
              s=s.slice(5);
              s=parseInt(s)+1;
-             
+
              $("#s1").after("<td><p id='count"+s+"'>0</p></td>");
              $("#s1").after("<td><p id='count"+s+1+"'>0</p></td>");
              $("#s2").after("<td><span id='top"+s+"' class='ui-widget-header'><div class='x'></div></span></td>");
@@ -457,19 +476,19 @@ $(document).on("click","#a",function()
       $("ul").append("<li>2 rows added</li>");
             $(".pp").text("2 rows added");
            } );
-              
+
 $(document).on("click","#d",function()
            {
-            
+
              $("#c td:lt(3):has(p)").remove();
               $("#topc td:lt(3):has(span)").remove();
              $("#bottom td:lt(3):has(span)").remove();
              $("ul").append("<li>2 rows deleted</li>");
-            
+
             $(".pp").text("2 rows deleted");
              $("#topc .x").css("background-color", "yellow").css("bottom", "6px");
       $("#bottom .x").css("background-color", "yellow").css("bottom", "-100px");
-        $("p").text("0");        
+        $("p").text("0");
            } );
 
 
@@ -486,8 +505,8 @@ $( window ).unload(function() {
 
 $(document).ready(
 function(){
-  
-  
+
+
  var t= $.jStorage.get("JSON");
  console.log("T "+t);
   $("ul").append(t);
@@ -501,7 +520,7 @@ $(document).on("click","li",function bigfunct() {
    function abcd() {
            $("#topc .x").css("background-color", "yellow").css("bottom", "6px");
       $("#bottom .x").css("background-color", "yellow").css("bottom", "-100px");
-        $("p").text("0"); 
+        $("p").text("0");
                 var wholePart = Math.floor(n);
                 var parts = [];
                 var multiplier = 1;
@@ -514,18 +533,18 @@ $(document).on("click","li",function bigfunct() {
                         wholePart = Math.floor(wholePart / 10);
                         multiplier *= 10;
                 }
-               
+
          for (var i =0; i < parts.length; i++) {
-                      
+
                   var x = parts.length - i;
                         var moved = parts[i] / (Math.pow(10, x -
                                 1));
            parts[i]=moved;
          }
-           parts.reverse(); 
+           parts.reverse();
           for(var j=parts.length-1;j>-1;j--)
              {
-             
+
                $("#count"+j).text(parts[j]);
                console.log(j);
               if(parts[j]<5)
@@ -535,28 +554,28 @@ $(document).on("click","li",function bigfunct() {
                  {$("#start"+j+" .x").not($("#start"+j+" .x").slice(parts[j]-5)).css("background-color", "black").css(
                         "bottom", "0px");
                 $("#top"+j+" .x").css("background-color", "black").css("bottom", "-60px");}
-                
-                
-                
-                
-                
+
+
+
+
+
               }
              }
-        }     
-  
-  
-  
-  
-  
+        }
+
+
+
+
+
   var n = $(this).text().replace(/,/g , "");
         $(".pp").text(n);
-  
+
   if(n=="2 rows Added")
     {
       var s=$("#c p:first").attr("id");
              s=s.slice(5);
              s=parseInt(s)+1;
-             
+
              $("#s1").after("<td><p id='count"+s+"'>0</p></td>");
              $("#s1").after("<td><p id='count"+s+1+"'>0</p></td>");
              $("#s2").after("<td><span id='top"+s+"' class='ui-widget-header'><div class='x'></div></span></td>");
@@ -564,22 +583,22 @@ $(document).on("click","li",function bigfunct() {
              $("#s3").after("<td><span id='start"+s+"' class='ui-widget-header'><div class='x'></div><div class='x'></div><div class='x'></div><div class='x'></div></span></td>");
              $("#s3").after("<td><span id='start"+s+1+"' class='ui-widget-header'><div class='x'></div><div class='x'></div><div class='x'></div><div class='x'></div></span></td>");
       $("ul").append("<li>2 rows added</li>");
-      
+
     }
     else
     {
       abcd();
        $("ul").append("<li>List Clicked "+n+"</li>");
 
-  
+
   }
-  
+
 });
 
 
-$("#cd").click(function(){ 
+$("#cd").click(function(){
   var conf= confirm("Are you sure you want to delete all data. Once it is lost there is no way to retrieve it.Do you still wish to delete your data?");
- if(conf){      
+ if(conf){
  $("ul li").remove();
   $.jStorage.set("JSON",$('ul').html().toString());}});
 
@@ -596,5 +615,6 @@ $("#cd").click(function(){
 
 
 </script>
+
 </body>
 </html>
