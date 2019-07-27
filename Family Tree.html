@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)file:///C:/Users/admin/Downloads/jsbin.belubuz.5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><meta name="robots" content="noindex">
+
+
+    <title>Network | Hierarchical layout</title>
+
+    <style type="text/css">
+        body {
+            font: 10pt sans;
+        }
+
+        #mynetwork {
+            width: 100%;
+            height: 600px;
+            border: 1px solid lightgray;
+        }
+    </style>
+
+   
+ 	<link rel="stylesheet" href="./Family Tree_files/vis.min.css">
+<script src="./Family Tree_files/vis.min.js.download"></script>
+
+
+    <script type="text/javascript">
+        var nodes = null;
+        var edges = null;
+        var network = null;
+
+        function destroy() {
+            if (network !== null) {
+                network.destroy();
+                network = null;
+            }
+        }
+
+      
+    </script>
+    
+</head>
+
+<body onload="importNetwork();">
+<h2>Hierarchical Layout - Scale-Free-Network</h2>
+
+
+<p>
+    <input type="button" id="btn-UD" value="Up-Down">
+    <input type="button" id="btn-DU" value="Down-Up">
+    <input type="button" id="btn-LR" value="Left-Right">
+    <input type="button" id="btn-RL" value="Right-Left">
+    <input type="hidden" id="direction" value="UD">
+</p>
+
+    <input type="button" onclick="exportNetwork()" value="Save">
+    <input type="button" onclick="importNetwork()" value="Load">
+	
+<script language="javascript">
+    var directionInput = document.getElementById("direction");
+    var btnUD = document.getElementById("btn-UD");
+    btnUD.onclick = function () {
+        directionInput.value = "UD";
+        draw();
+    }
+    var btnDU = document.getElementById("btn-DU");
+    btnDU.onclick = function () {
+        directionInput.value = "DU";
+        draw();
+    };
+    var btnLR = document.getElementById("btn-LR");
+    btnLR.onclick = function () {
+        directionInput.value = "LR";
+        draw();
+    };
+    var btnRL = document.getElementById("btn-RL");
+    btnRL.onclick = function () {
+        directionInput.value = "RL";
+        draw();
+    };
+</script>
+<br>
+
+<div id="mynetwork"><div class="vis-network" tabindex="900" style="position: relative; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;"><canvas width="1900" height="750" style="position: relative; touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); width: 100%; height: 100%;"></canvas><div class="vis-manipulation" style="display: none;"></div><div class="vis-edit-mode" style="display: block;"><div class="vis-button vis-edit vis-edit-mode" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><div class="vis-label">Edit</div></div></div><div class="vis-close" style="display: none;"></div></div></div>
+
+<p id="selection"></p>
+<script id="jsbin-javascript">
+var actualdata=[
+ {
+   "id": 0,
+   "label": "Jagannath Rao",
+   "level": 1,
+   "color": "lightblue"
+ },
+ {
+   "id": 1,
+   "label": "Subhadra",
+   "level": 1,
+   "color": "pink"
+ },
+ {
+   "id": 2,
+   "label": "Pedda",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 3,
+   "label": "Sasibhusan Rao",
+   "level": 2,
+   "color": "lightblue"
+ },
+ {
+   "id": 4,
+   "label": "Kalavathi",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 5,
+   "label": "Srinivas",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 6,
+   "label": "Urmila",
+   "level": 1,
+   "color": "pink"
+ },
+ {
+   "id": 7,
+   "label": "Rama Rao",
+   "level": 1,
+   "color": "lightblue"
+ },
+ {
+   "id": 8,
+   "label": "Bharathi",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 9,
+   "label": "Ramachandra Rao",
+   "level": 2,
+   "color": "lightblue"
+ },
+ {
+   "id": 10,
+   "label": "Kanna Babu",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 11,
+   "label": "Ramesh",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 12,
+   "label": "Kanchana",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 13,
+   "label": "Lakshman Rao",
+   "level": 1,
+   "color": "lightblue"
+ },
+ {
+   "id": 14,
+   "label": "Chitti",
+   "level": 1,
+   "color": "pink"
+ },
+ {
+   "id": 15,
+   "label": "Kaleshweri Devi",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 16,
+   "label": "Mrutyunjaya Rao",
+   "level": 2,
+   "color": "lightblue"
+ },
+ {
+   "id": 17,
+   "label": "Rama",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 18,
+   "label": "Jagadeesh",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 19,
+   "label": "Ramesh",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 20,
+   "label": "Siri",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 21,
+   "label": "Sridevi",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 22,
+   "label": "Ravi",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 23,
+   "label": "Kush",
+   "level": 4,
+   "color": "lightblue"
+ },
+ {
+   "id": 24,
+   "label": "Yeshi",
+   "level": 4,
+   "color": "pink"
+ },
+ {
+   "id": 25,
+   "label": "Malli",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 26,
+   "label": "Seshu",
+   "level": 2,
+   "color": "lightblue"
+ },
+ {
+   "id": 27,
+   "label": "Nani",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 28,
+   "label": "Sekhar",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 29,
+   "label": "Santhi",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 30,
+   "label": "Sunitha",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 31,
+   "label": "Mani",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 32,
+   "label": "Mani's Husband",
+   "level": 2,
+   "color": "lightblue"
+ },
+ {
+   "id": 33,
+   "label": "Santhosh",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 34,
+   "label": "Geeta",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 35,
+   "label": "Prasad",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 36,
+   "label": "Swarna",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 37,
+   "label": "Swarna's Husband",
+   "level": 2,
+   "color": "lightblue"
+ },
+ {
+   "id": 38,
+   "label": "Savitri",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 39,
+   "label": "Surya",
+   "level": 2,
+   "color": "lightblue"
+ },
+ {
+   "id": 40,
+   "label": "Sudha",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 41,
+   "label": "Uma",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 42,
+   "label": "Alli",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 43,
+   "label": "Leela",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 44,
+   "label": "Tirupathi",
+   "level": 2,
+   "color": "lightblue"
+ },
+ {
+   "id": 45,
+   "label": "Gopi",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 46,
+   "label": "Pedda",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 47,
+   "label": "Chinna",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 48,
+   "label": "Nani",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 49,
+   "label": "Chitti",
+   "level": 3,
+   "color": "pink"
+ },
+ {
+   "id": 50,
+   "label": "Kanna",
+   "level": 2,
+   "color": "pink"
+ },
+ {
+   "id": 51,
+   "label": "Surya Rao",
+   "level": 2,
+   "color": "lightblue"
+ },
+ {
+   "id": 52,
+   "label": "Nanaji",
+   "level": 3,
+   "color": "lightblue"
+ },
+ {
+   "id": 53,
+   "label": "Bojji",
+   "level": 3,
+   "color": "pink"
+ }
+];
+
+ var network;
+  var allNodes;
+  var highlightActive = false;
+
+var d = [
+  {
+    "x": 1094,
+    "y": -225,
+    "id": "0",
+    "connections": [
+      1,
+      2,
+      3,
+      8,
+      16,
+      25,
+      31,
+      36,
+      38,
+      43,
+      50
+    ]
+  },
+  {
+    "x": 947,
+    "y": -225,
+    "id": "1",
+    "connections": [
+      "0",
+      3,
+      8,
+      16,
+      25,
+      31,
+      36,
+      43,
+      50
+    ]
+  },
+  {
+    "x": 1021,
+    "y": -75,
+    "id": "2",
+    "connections": [
+      "0"
+    ]
+  },
+  {
+    "x": 318,
+    "y": -75,
+    "id": "3",
+    "connections": [
+      "0",
+      "1",
+      4,
+      5
+    ]
+  },
+  {
+    "x": 201,
+    "y": -75,
+    "id": "4",
+    "connections": [
+      "3",
+      5,
+      6,
+      7
+    ]
+  },
+  {
+    "x": 280,
+    "y": 75,
+    "id": "5",
+    "connections": [
+      "3",
+      "4"
+    ]
+  },
+  {
+    "x": 179,
+    "y": -225,
+    "id": "6",
+    "connections": [
+      "4",
+      7,
+      15
+    ]
+  },
+  {
+    "x": 294,
+    "y": -225,
+    "id": "7",
+    "connections": [
+      "4",
+      "6",
+      13,
+      15
+    ]
+  },
+  {
+    "x": 511,
+    "y": -75,
+    "id": "8",
+    "connections": [
+      "0",
+      "1",
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  {
+    "x": 612,
+    "y": -75,
+    "id": "9",
+    "connections": [
+      "8",
+      10,
+      11,
+      12
+    ]
+  },
+  {
+    "x": 547,
+    "y": 75,
+    "id": "10",
+    "connections": [
+      "8",
+      "9"
+    ]
+  },
+  {
+    "x": 459,
+    "y": 75,
+    "id": "11",
+    "connections": [
+      "8",
+      "9"
+    ]
+  },
+  {
+    "x": 690,
+    "y": 75,
+    "id": "12",
+    "connections": [
+      "8",
+      "9"
+    ]
+  },
+  {
+    "x": -422,
+    "y": -225,
+    "id": "13",
+    "connections": [
+      "7"
+    ]
+  },
+  {
+    "x": -136,
+    "y": -225,
+    "id": "14",
+    "connections": [
+      15
+    ]
+  },
+  {
+    "x": -138,
+    "y": -75,
+    "id": "15",
+    "connections": [
+      "6",
+      "7",
+      "14",
+      16,
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "x": -1,
+    "y": -75,
+    "id": "16",
+    "connections": [
+      "0",
+      "1",
+      "15",
+      17,
+      18,
+      19
+    ]
+  },
+  {
+    "x": -59,
+    "y": 75,
+    "id": "17",
+    "connections": [
+      "15",
+      "16",
+      22
+    ]
+  },
+  {
+    "x": 82,
+    "y": 75,
+    "id": "18",
+    "connections": [
+      "15",
+      "16",
+      21,
+      23,
+      24
+    ]
+  },
+  {
+    "x": -127,
+    "y": 75,
+    "id": "19",
+    "connections": [
+      "15",
+      "16",
+      20
+    ]
+  },
+  {
+    "x": 626,
+    "y": 75,
+    "id": "20",
+    "connections": [
+      "19"
+    ]
+  },
+  {
+    "x": 163,
+    "y": 75,
+    "id": "21",
+    "connections": [
+      "18",
+      23,
+      24,
+      25,
+      26
+    ]
+  },
+  {
+    "x": 873,
+    "y": 75,
+    "id": "22",
+    "connections": [
+      "17",
+      50,
+      51
+    ]
+  },
+  {
+    "x": 85,
+    "y": 225,
+    "id": "23",
+    "connections": [
+      "18",
+      "21"
+    ]
+  },
+  {
+    "x": 147,
+    "y": 225,
+    "id": "24",
+    "connections": [
+      "18",
+      "21"
+    ]
+  },
+  {
+    "x": 1161,
+    "y": -75,
+    "id": "25",
+    "connections": [
+      "0",
+      "1",
+      "21",
+      26,
+      27,
+      28,
+      29,
+      30
+    ]
+  },
+  {
+    "x": 1227,
+    "y": -75,
+    "id": "26",
+    "connections": [
+      "21",
+      "25",
+      27,
+      28,
+      29,
+      30
+    ]
+  },
+  {
+    "x": 1067,
+    "y": 75,
+    "id": "27",
+    "connections": [
+      "25",
+      "26"
+    ]
+  },
+  {
+    "x": 1133,
+    "y": 75,
+    "id": "28",
+    "connections": [
+      "25",
+      "26"
+    ]
+  },
+  {
+    "x": 1203,
+    "y": 75,
+    "id": "29",
+    "connections": [
+      "25",
+      "26"
+    ]
+  },
+  {
+    "x": 1277,
+    "y": 75,
+    "id": "30",
+    "connections": [
+      "25",
+      "26"
+    ]
+  },
+  {
+    "x": 1369,
+    "y": -75,
+    "id": "31",
+    "connections": [
+      "0",
+      "1",
+      32,
+      33,
+      34
+    ]
+  },
+  {
+    "x": 1462,
+    "y": -75,
+    "id": "32",
+    "connections": [
+      "31",
+      33,
+      34
+    ]
+  },
+  {
+    "x": 1421,
+    "y": 75,
+    "id": "33",
+    "connections": [
+      "31",
+      "32"
+    ]
+  },
+  {
+    "x": 1500,
+    "y": 75,
+    "id": "34",
+    "connections": [
+      "31",
+      "32"
+    ]
+  },
+  {
+    "x": 1764,
+    "y": 75,
+    "id": "35",
+    "connections": [
+      37,
+      36
+    ]
+  },
+  {
+    "x": 1710,
+    "y": -75,
+    "id": "36",
+    "connections": [
+      "0",
+      "1",
+      "35",
+      37
+    ]
+  },
+  {
+    "x": 1808,
+    "y": -75,
+    "id": "37",
+    "connections": [
+      "35",
+      "36"
+    ]
+  },
+  {
+    "x": 2148,
+    "y": -75,
+    "id": "38",
+    "connections": [
+      "0",
+      39,
+      41,
+      40,
+      42
+    ]
+  },
+  {
+    "x": 2210,
+    "y": -75,
+    "id": "39",
+    "connections": [
+      "38",
+      40,
+      41,
+      42
+    ]
+  },
+  {
+    "x": 2067,
+    "y": 75,
+    "id": "40",
+    "connections": [
+      "38",
+      "39"
+    ]
+  },
+  {
+    "x": 2124,
+    "y": 75,
+    "id": "41",
+    "connections": [
+      "38",
+      "39"
+    ]
+  },
+  {
+    "x": 2177,
+    "y": 75,
+    "id": "42",
+    "connections": [
+      "38",
+      "39"
+    ]
+  },
+  {
+    "x": 2602,
+    "y": -75,
+    "id": "43",
+    "connections": [
+      "0",
+      "1",
+      44,
+      46,
+      47,
+      48,
+      49,
+      45
+    ]
+  },
+  {
+    "x": 2662,
+    "y": -75,
+    "id": "44",
+    "connections": [
+      "43",
+      46,
+      47,
+      48,
+      49,
+      45
+    ]
+  },
+  {
+    "x": 2452,
+    "y": 75,
+    "id": "45",
+    "connections": [
+      "43",
+      "44"
+    ]
+  },
+  {
+    "x": 2509,
+    "y": 75,
+    "id": "46",
+    "connections": [
+      "43",
+      "44"
+    ]
+  },
+  {
+    "x": 2686,
+    "y": 75,
+    "id": "47",
+    "connections": [
+      "43",
+      "44"
+    ]
+  },
+  {
+    "x": 2564,
+    "y": 75,
+    "id": "48",
+    "connections": [
+      "43",
+      "44"
+    ]
+  },
+  {
+    "x": 2631,
+    "y": 75,
+    "id": "49",
+    "connections": [
+      "43",
+      "44"
+    ]
+  },
+  {
+    "x": 808,
+    "y": -75,
+    "id": "50",
+    "connections": [
+      "0",
+      "1",
+      "22",
+      "53",
+      "52"
+    ]
+  },
+  {
+    "x": 892,
+    "y": -75,
+    "id": "51",
+    "connections": [
+      "22",
+      "53",
+      "52"
+    ]
+  },
+  {
+    "x": 805,
+    "y": 75,
+    "id": "52",
+    "connections": [
+      "50",
+      "51"
+    ]
+  },
+  {
+    "x": 920,
+    "y": 75,
+    "id": "53",
+    "connections": [
+      "50",
+      "51"
+    ]
+  }
+];
+
+function exportNetwork() {
+
+
+    var nodes = objectToArray(network.getPositions());
+
+    nodes.forEach(addConnections);
+
+    // pretty print node data
+    var exportValue = JSON.stringify(nodes, undefined, 2);
+    console.log(exportValue);
+
+}
+var nodesDataset = new vis.DataSet(nodes); // these come from WorldCup2014.js
+  var edgesDataset = new vis.DataSet(edges); // these come from WorldCup2014.js
+function importNetwork() {  var container = document.getElementById('mynetwork');
+            var directionInput = document.getElementById("direction").value;
+    var inputData = d;
+ destroy();			  
+	var dat=[];
+				for(var ind in d){
+					dat[ind]=actualdata[ind];
+					dat[ind].x=d[ind].x;
+					dat[ind].y=d[ind].y;
+					console.log(d[ind]);
+				}		  
+						  var data = {
+        nodes: dat,
+        edges: getEdgeData(inputData)
+    }
+  nodesDataset = new vis.DataSet(data.nodes); // these come from WorldCup2014.js
+   edgesDataset = new vis.DataSet(data.edges); // these come from WorldCup2014.js
+
+    
+            var options = {nodes: {
+        shape: 'dot',
+        scaling: {
+          min: 10,
+          max: 30,
+          label: {
+            min: 8,
+            max: 30,
+            drawThreshold: 12,
+            maxVisible: 20
+          }
+        },
+        font: {
+          size: 12,
+          face: 'Tahoma'
+        }
+      }, edges: {
+        width: 0.15,
+        color: {inherit: 'from'},
+        smooth: {
+          type: 'continuous'
+        }
+      },interaction: {
+        tooltipDelay: 200,
+        hideEdgesOnDrag: true
+      },
+				physics:{enabled:false},
+                layout: {
+                    hierarchical: {
+                        direction: directionInput
+                    }
+                },
+  manipulation: {
+    enabled: true,addNode: false,deleteNode: true,editEdge: function(nodeData,callback) {
+      nodeData.label = prompt("Please enter edge label", ""); 
+       callback(nodeData);   }   }
+    
+            };
+network = new vis.Network(container, data, options);
+    // get a JSON object
+    allNodes = nodesDataset.get({returnType:"Object"});
+
+    network.on("click",neighbourhoodHighlight);
+}
+
+
+function getNodeData(data) {
+    var networkNodes = actualdata;
+
+    return new vis.DataSet(networkNodes);
+}
+
+function getNodeById(data, id) {
+    for (var n = 0; n < data.length; n++) {
+        if (data[n].id == id) { // double equals since id can be numeric or string
+            return data[n];
+        }
+    };
+
+    throw 'Can not find id \'' + id + '\' in data';
+}
+
+function getEdgeData(data) {
+    var networkEdges = [];
+
+    data.forEach(function(node) {
+        // add the connection
+        node.connections.forEach(function(connId, cIndex, conns) {
+            networkEdges.push({
+                from: node.id,
+                to: connId
+            });
+            let cNode = getNodeById(data, connId);
+
+            var elementConnections = cNode.connections;
+
+            // remove the connection from the other node to prevent duplicate connections
+            var duplicateIndex = elementConnections.findIndex(function(connection) {
+                return connection == node.id; // double equals since id can be numeric or string
+            });
+
+
+            if (duplicateIndex != -1) {
+                elementConnections.splice(duplicateIndex, 1);
+            };
+        });
+    });
+
+    return new vis.DataSet(networkEdges);
+}
+
+function objectToArray(obj) {
+    return Object.keys(obj).map(function(key) {
+        obj[key].id = key;
+        return obj[key];
+    });
+}
+
+function addConnections(elem, index) {
+    // need to replace this with a tree of the network, then get child direct children of the element
+    elem.connections = network.getConnectedNodes(index);
+}
+
+
+  
+
+  function neighbourhoodHighlight(params) {
+    // if something is selected:
+    if (params.nodes.length > 0) {
+      highlightActive = true;
+      var i,j;
+      var selectedNode = params.nodes[0];
+      var degrees = 2;
+
+      // mark all nodes as hard to read.
+      for (var nodeId in allNodes) {
+        allNodes[nodeId].color = 'rgba(200,200,200,0.5)';
+        if (allNodes[nodeId].hiddenLabel === undefined) {
+          allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+          allNodes[nodeId].label = undefined;
+        }
+      }
+      var connectedNodes = network.getConnectedNodes(selectedNode);
+      var allConnectedNodes = [];
+
+      // get the second degree nodes
+      for (i = 1; i < degrees; i++) {
+        for (j = 0; j < connectedNodes.length; j++) {
+          allConnectedNodes = allConnectedNodes.concat(network.getConnectedNodes(connectedNodes[j]));
+        }
+      }
+
+      // all second degree nodes get a different color and their label back
+      for (i = 0; i < allConnectedNodes.length; i++) {
+        allNodes[allConnectedNodes[i]].color = 'rgba(150,150,150,0.75)';
+        if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+          allNodes[allConnectedNodes[i]].label = allNodes[allConnectedNodes[i]].hiddenLabel;
+          allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+        }
+      }
+
+      // all first degree nodes get their own color and their label back
+      for (i = 0; i < connectedNodes.length; i++) {
+        allNodes[connectedNodes[i]].color = undefined;
+        if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+          allNodes[connectedNodes[i]].label = allNodes[connectedNodes[i]].hiddenLabel;
+          allNodes[connectedNodes[i]].hiddenLabel = undefined;
+        }
+      }
+
+      // the main node gets its own color and its label back.
+      allNodes[selectedNode].color = undefined;
+      if (allNodes[selectedNode].hiddenLabel !== undefined) {
+        allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+        allNodes[selectedNode].hiddenLabel = undefined;
+      }
+    }
+    else if (highlightActive === true) {
+      // reset all nodes
+      for (var nodeId in allNodes) {
+        allNodes[nodeId].color = undefined;
+        if (allNodes[nodeId].hiddenLabel !== undefined) {
+          allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+          allNodes[nodeId].hiddenLabel = undefined;
+        }
+      }
+      highlightActive = false
+    }
+
+    // transform the object into an array
+    var updateArray = [];
+    for (nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodesDataset.update(updateArray);
+  }
+
+</script>
+
+
+</body></html>
