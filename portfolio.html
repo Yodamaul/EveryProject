@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap" rel="stylesheet">
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/css/uikit.min.css" />
+   <link rel="stylesheet" href="style.css">
+    <title>ASKP Portfolio</title>
+
+<!-- UIkit JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.7/js/uikit-icons.min.js"></script>
+
+</head>
+<body>
+        <div id ="app" class="uk-container" >
+                <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
+                        <nav class="uk-navbar-container" uk-navbar="dropbar: true;">
+                    <div class="uk-navbar-left">
+                   
+    <a class="uk-navbar-item uk-logo" href="#">askp.</a>  
+                    </div><div class="uk-navbar-right">
+                        <ul class="uk-navbar-nav">
+                            <!-- <li class="uk-active"><a href="#">Home</a></li>
+                            <li><a href="#">About Me</a></li>-->
+                            <li> 
+                                <a href="#">
+                                         <span class="uk-margin-small-left">Menu</span><span uk-icon="icon : more-vertical"></span>
+                                    </a>
+                                <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li ><a href="index.html">Home</a></li><li><a href="portfolio.html">Portfolio</a></li>
+                                            <li class="uk-active"><a href="about.html">About Me</a></li>
+                                          
+                                        </ul>
+                                    </div>
+                            </li>
+                        </ul>
+                                            </div>
+                </nav>
+                
+            </div>
+
+            <div class="uk-container content">
+                    <div class="uk-child-width-1-2@m" uk-grid>
+                            <div v-for="a in apps">
+                                <div class="uk-card uk-card-default">
+                                
+                                    <div class="uk-card-body">
+                                        <h3 class="uk-card-title">{{a.title}} <small>{{a.year}}</small></h3>
+                                        <p>{{a.description}}</p>
+                                        <a v-bind:href="a.url">View Project</a>
+                                    </div>
+
+                                    <!-- <div class="uk-class-footer"> <center><span class="uk-badge" v-for="tag in a.tags">{{tag}}</span></center></div> -->
+                                </div>
+                            </div>
+    
+                        </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  
+  <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+              message: 'Hello Vue!',
+              show:false,
+              apps: [  {
+                  title: "Yodamaul Blog",
+                  description:"My Personal Blog.",
+                  url:"/blog.html",
+                  year: "2018-Present",
+                  
+                },
+                {
+                  title: "Noir.CSS",
+                  description:"A flat minimal css framework that takes inspiration from film noir.",
+                  url:"https://github.com/Yodamaul/noircss",
+                  year: 2018,
+                  tags:["HTML5","UI Design","CSS3","Framework","Flat/Minimalist Design"]
+          
+                },
+                {
+                  title: "Mesh.CSS",
+                  description:"A CSS grid framework.",
+                  url:"https://github.com/Yodamaul/meshcss",
+                  year: 2018,
+                  tags:["HTML5","UI Design","CSS3","Framework","Flexbox/Grid"]
+          
+                },
+                {
+                  title: "Kioku",
+                  description:"A method to help dementia and memory loss pateients remember their families.",
+                  url:"https://github.com/Yodamaul/Kioku",
+                  year: 2019,
+                  tags:["HTML5","Node.JS","CSS3","AI","AR","Python","Facial Recogntion","Medical"]
+          
+          
+                }, {
+                  title: "burn-eth-burn",
+                  description:"An art piece that uses burned ETH as a fuel to build itself.",
+                  url:"https://github.com/Yodamaul/burn-eth-burn",
+                  year: 2019,
+                  tags:["HTML5","Node.JS","CSS3","Cryptocurrency","ETH","Art","Blockchain"]
+          
+          
+                },
+                {
+                  title: "Flexedu",
+                  description:"An artificially intelligent educational platform.",
+                  url:"https://github.com/Yodamaul/Flexedu",
+                  year: 2019,
+                  tags:["HTML5","JS","CSS3","AI","Adaptive Education"]
+          
+          
+                },
+                {
+                  title: "Finpacer",
+                  description:"A financial tracker that uses ML to track your spending habits and helps planning for future ventures.",
+                  url:"https://github.com/Yodamaul/Finpacer",
+                  year: 2018,
+                  
+                  tags:["HTML5","JS","CSS3","Machine Learning","Adaptive Finance", "UI Design"]
+          
+                },
+                {
+                  title: "Yodamaul Stock Analysis",
+                  description:"A simulated stock analysis tool, similar to that used by big companies such as OPTIVER",
+                  url:"https://github.com/Yodamaul/Yodamaul-Stock-Analysis",
+                  year: 2019,
+                  
+                  tags:["HTML5","Node.js","CSS3","ML","Finance","Stock Analysis"]
+          
+                },
+                {
+                  title: "SecureChat",
+                  description:"A secure P2P chat built using Socket.io",
+                  url:"https://github.com/Yodamaul/SecureChat",
+                  year: 2019
+          
+                },
+                {
+                  title: "Working-Comment-System",
+                  description:"A... working comment system?",
+                  url:"https://github.com/Yodamaul/Working-Comment-System",
+                  year: "201?"
+          
+                },
+                {
+                  title: "HASHID",
+                  description:"HASH ID IS HUSH HUSH.",
+                  url:"https://github.com/Yodamaul/HASHID",
+                  year: 2017
+          
+                },
+                {
+                  title: "rss",
+                  description:"A working rss tool.",
+                  url:"https://github.com/Yodamaul/rss",
+                  year: 2017
+          
+                },
+                {
+                  title: "Family Tree",
+                  description:"A Family Tree tool.",
+                  url:"https://github.com/Yodamaul/Family-Tree",
+                  year: 2018
+          
+                },
+                {
+                  title: "QR",
+                  description:"A QR Code chrome extension/",
+                  url:"https://github.com/Yodamaul/QR",
+                  year: "2013"
+          
+                },
+                {
+                  title: "Chatter",
+                  description:"An experimental social network.",
+                  url:"https://github.com/Yodamaul/Chatter",
+                  year: "2015-?"
+          
+                },
+                {
+                  title: "Slang-Remover",
+                  description:"A chrome extension that removes slang and shows synonyms for certain words.",
+                  url:"https://github.com/Yodamaul/Slang-Remover",
+                  year: 2017
+          
+                },
+                {
+                  title: "Every Other Project",
+                  description:"Various other projects.",
+                  url:"https://github.com/Yodamaul/EveryProject",
+                  year: "2011 - 2019"
+          
+                },
+                {
+                  title: "KNTRL",
+                  description:"An app that lets you control you computer from the comfort of your mobile phone..",
+                  url:"https://github.com/Yodamaul/volumecontrol",
+                  year: 2017
+          
+                },
+                {
+                  title: "ACADME",
+                  description:"An java app that simaulates educational systems.",
+                  url:"https://github.com/Pokemon9753/Acadme",
+                  year: 2015
+          
+                },
+          
+              ]
+            },
+            methods:{
+                toggle:function(){
+                    app.show= !app.show;
+          
+          
+                }
+          
+          
+            }
+          })
+        </script>
+</body>
+</html>
