@@ -1,264 +1,110 @@
 <!DOCTYPE html>
-<!--
-Created using JS Bin
-http://jsbin.com
-
-Copyright (c) 2016 by Yekush (http://jsbin.com/lereha/5/edit)
-
-Released under the MIT license: http://jsbin.mit-license.org
--->
-<meta name="robots" content="noindex">
-
-<html>
-
+<html lang="en">
 <head>
-	
-<meta name="title" content="AcadME">
-<meta name="description" content="AcadME Full App">
-   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, height=device-height" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+ 
+<link rel="stylesheet" href="./skeleton.css">
 
-  <preference name="EnableViewportScale" value="true" />
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="https://code.ionicframework.com/1.2.4/js/ionic.bundle.js"></script>
-  <link href="https://code.ionicframework.com/1.2.4/css/ionic.min.css" rel="stylesheet" type="text/css" />
-
-  <script src="https://cdn.firebase.com/js/client/2.1.1/firebase.js"></script>
-  <title>Assignments</title>
-<style id="jsbin-css">
-ion-content{background-color:#2c3e50}
-    .card{
-        max-width: 1024px;
-        margin-left:auto;
-        margin-right:auto;
-    }
-</style>
 </head>
+<body><div id="app" class="container">
+            <h1 class="title">
+            Random Odds and Ends
+            </h1>
+            <h6 class="subtitle">
+              This page houses some of my older and smaller projects. These might often be broken - mainly due to Firebase having changed hands in the meanwhile, but maybe some of then could be fun to play with. I'll be adding more as I find and fix them.
+            </h6>
 
-<body ng-app="ionicApp">
-  <div ng-controller="MainCtrl">
-		<ion-content>
-			<div class="list card">
+            <h6><b>Some of these are scary to say the least. Please refrain from interaction if you are afraid of terrible coding practices and design.</b></h6>
 
-  <a href="#html" class="item item-icon-left">
-    <i class="icon ion-social-html5"></i>
-   HTML/CSS
-  </a>
+            <a class="button" href="index.html">Go Home</a>
+        <hr>
+        
 
-  <a href="#html" class="item item-icon-left">
-    <i class="icon ion-social-javascript"></i>
-    Javascript
-  </a>
+        <h4>Abaci</h4>
+<p>When I first started off I was obcessed with Abaci for some reason. I made so many different kinds of abaci. Here they are in all their glory.</p>
+        <table class="u-full-width">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="a in abaci">
+                <td>{{a.title}}</td>
+                <td>{{a.desc}}</td>
+                <td>   <a v-bind:href="'.'+ a.url">Visit App </a></td>
+       
+              </tr>
+            </tbody>
+          </table>
+          <h4>Other Stuff</h4>
+        <table class="u-full-width">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="a in apps">
+                <td>{{a.title}}</td>
+                <td>{{a.desc}}</td>
+                <td>   <a v-bind:href="'.'+ a.url">Visit App </a></td>
+       
+              </tr>
+            </tbody>
+          </table>
 
-  <a href="#java" class="item item-icon-left"><i class="icon ion-coffee"></i>
-    
-   Java
-  </a>
 
-  <a href="#python" class="item item-icon-left">
-    <i class="icon ion-social-python"></i>
-    Python
-				</a>
+        </div>
 
-  <div class="item item-icon-left">
-    <i class="icon ion-social-octocat"></i>
-    Git
-				</div>
 
-  <a href="#chrome" class="item item-icon-left">
-    <i class="icon ion-social-chrome-outline"></i>
-    Chrome Extentions
-				</a>
 
-</div>
-			<div id="java" class="list card">
+      <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+            abaci:[
+                {title:"Mayan Abacus [Redux]",url:"/maredux.html",desc:"The most recent of the abaci based on the Mayan Abacus (Base 20) - also the best looking."},
+                
+                {title:"Suanpan",url:"/cabac.html",desc:"A mockup of a Chinese Abacus - aka a Suanpan."},
+                                       
+                {title:"Draggable Abacus",url:"/draggable.html",desc:"An actual draggable Abacus. Magic to a middle schooler."},
+                {title:"Japanese Abacus",url:"/jabac.html",desc:"A Japanese Abacus."},
+                {title:"Mayan Abacus",url:"/mabac.html",desc:"The OG Mayan Abacus."},
+                {title:"Slider Abacus",url:"/slider.html",desc:"A Sliding Abacus. Doesn't even show a total."},
+                                       
+            
+            
 
-  <div class="item item-avatar">
-    <img src="https://upload.wikimedia.org/wikipedia/en/8/88/Java_logo.png">
-    <h2>Acadme</h2>
-    <p>Java</p>
-  </div>
+            
+            ],
+            apps:[
+                {title:"Monopoly",url:"/monopoly.html",desc:"A Monopoly Clone. There isn't any real interaction past random rolling of the die and moving around- as I was focused more so on the board itself."}
+, {title:"Blackjack",url:"/blackjack.html",desc:"A brutalist interpretation of Blackjack. Clean no fluff UI."},
+{title:"Calender",url:"/calender.html",desc:"A simplistic no-frills Google Calender knockoff."},
+{title:"Bookmarks",url:"/bookmark.html",desc:"A now defunct bookmarks page. Thanks Firebase!"},
+{title:"Color Games",url:"/colorgames.html",desc:"A series of simple Color based Puzzles!"},
+{title:"Data Project",url:"/csse.html",desc:"A hs data project with knifty animations and slideshow controls!"},
+{title:"Guessing Game",url:"/guess.html",desc:"A little guessing game! Brutalist UI!"},
+{title:"Links Tool",url:"/linkstool.html",desc:"A link visualization tool made with Vis.JS- Early family tool prototype."},
+{title:"Solar System",url:"/solarsystem.html",desc:"A web visualiztion of the Solar System. Only works when zoomed   way way out."},
+{title:"Tic Tac Toe",url:"/tictactoe.html",desc:"The world's most difficult game. Now in pretty flat colors and bugs."},                   
+{title:"Simple Solar System",url:"/bss.html",desc:"At least this one works."},                       
+            
+            
 
-  <div class="item item-body">
-    <img class="full-image" src="https://raw.githubusercontent.com/Pokemon9753/askp-apps-testing/master/images/Acadame.png">
-    <p>
-     A simulated classroom created using Java. 
-    </p>
-    <p>
-      <a href="https://github.com/Pokemon9753/Acadme" target="_blank"  class="subdued">Github Repository</a>
-    </p>
-  </div>
+            
+            ]
 
-</div>
-						<div id="python" class="list card">
-
-  <div  class="item item-avatar">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png">
-    <h2>Paint</h2>
-    <p>Python, Tkinter</p>
-  </div>
-
-  <div class="item item-body">
-    <p>
-      A Python version of paint.  
-    </p>
-    <p>
-      <a href="https://github.com/Pokemon9753/askp-apps-testing/tree/master/Python" target="_blank"  class="subdued">Github Repository</a>
-    </p>
-  </div>
-
-</div>
-			
-				
-			<div id="html" class="list card">
-
-  <div class="item item-avatar">
-    <img src="http://vectorlogofree.com/wp-content/uploads/2014/07/38005-android-logo-icon-vector-icon-vector-eps.png">
-		<h2>Chatter <i>(In Progress)</i></h2>
-    <p>Native, Phonegap Build</p>
-  </div>
-
-  <div class="item item-body">
-    <p>
-      A Native Chat App built using Phonegap Build
-    </p>
-    
-  </div>
-
-</div>
-			
-			<div id="chrome" class="list card">
-
-  <div class="item item-avatar">
-    <img src="http://img.talkandroid.com/uploads/2015/11/Chrome-Logo.png">
-							<h2>QR Code Extention</h2>
-    <p>HTML, Javscript, CSS</p>
-  </div>
-
-  <div class="item item-body">
-<p>
-      A Chrome Extention that creates a Qr Code on any page. Can also be used as a plugin.
-    </p>
-    <p>
-      <a href="https://github.com/Pokemon9753/ymt" target="_blank"  class="subdued">Github Repository</a>
-    </p>
-  </div>
-
-</div>
-			
-			
-			
-			
-		
-			<div class="list card">
-
-  <div class="item item-avatar">
-    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
-    <h2>Word Tool</h2>
-    <p>HTML, Javscript, CSS, Ionic Framework, Firebase</p>
-  </div>
-
-  <div class="item item-body">
-     <p>
-      A spelling bee Web-App created with the Ionic Framework. 
-    </p>
-    <p>
-      <a href="/wordtool.html" class="subdued">Open</a>
-    </p>
-  </div>
-
-</div>
-			<div class="list card">
-
-  <div class="item item-avatar">
-    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
-    <h2>Calendar </h2>
-    <p>HTML, Javscript, CSS, Bootstrap</p>
-  </div>
-
-  <div class="item item-body">
-    <p>
-      A calendar made using the Fullcalendar API.
-    </p>
-    <p>
-      
-      <a href="/calendar.html" class="subdued">Open</a>
-    </p>
-  </div>
-
-</div>
-		
-					<div class="list card">
-
-  <div class="item item-avatar">
-    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
-    <h2>Time Line </h2>
-    <p>HTML, Javscript, CSS, D3</p>
-  </div>
-
-  <div class="item item-body">
-    <p>
-      A Timeline created using D3.
-    </p>
-    <p>
-      
-      <a href="https://yodamaul.firebaseapp.com/time.html" class="subdued">Open</a>
-    </p>
-  </div>
-
-</div>
-		
-					<div class="list card">
-
-  <div class="item item-avatar">
-    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
-    <h2>Matrix Calclator </h2>
-    <p>HTML, Javscript, CSS, JQM</p>
-  </div>
-
-  <div class="item item-body">
-    <p>
-      A Matrix Calculator.
-    </p>
-    <p>
-      
-      <a href="/mcalc.html" class="subdued">Open</a>
-    </p>
-  </div>
-
-</div>
-			
-						<div class="list card">
-
-  <div class="item item-avatar">
-    <img src="https://camo.githubusercontent.com/891e94cd8dda7f40f451bb27067be513c230318a/68747470733a2f2f7261772e6769746875622e636f6d2f766f6f646f6f74696b69676f642f6c6f676f2e6a732f6d61737465722f626f676a732f6a732e706e67">
-    <h2>Abaci </h2>
-    <p>HTML, Javscript, CSS, Bootstrap, JQM</p>
-  </div>
-
-  <div class="item item-body">
-    <p>
-      A multitude of Abaci, 3 are shown below: Mayan, Japanese, and Chinese. 
-    </p>
-    <p>
-      
-      <a href="/cabac.html" class="subdued">Chinese</a>
-      <a href="/mabac.html" class="subdued">Mayan</a>
-      <a href="/jabac.html" class="subdued">Japanese</a>
-    </p>
-  </div>
-
-</div>
-		
-		</ion-content>
-  </div>
-
-<script id="jsbin-javascript">
-
-var app = angular.module("ionicApp", ["ionic"]);
-app.controller('MainCtrl', function($scope) {
-  
-});
-</script>
+        }
+      })
+    </script>
 </body>
-
 </html>
